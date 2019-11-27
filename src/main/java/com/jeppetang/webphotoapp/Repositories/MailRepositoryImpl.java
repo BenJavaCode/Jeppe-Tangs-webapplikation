@@ -35,12 +35,17 @@ public class MailRepositoryImpl implements MailRepository {
 
     @Override
     public int saveMail(Mail mail) {
-        return 0;
+        return jdbcTemplate.update(
+                "insert into mail(sender, content, date, phoneNumber) VALUES (?,?,?,?)",
+                mail.getSender(), mail.getContent(), mail.getDate(), mail.getPhoneNumber());
     }
 
     @Override
     public int delete(int id) {
-        return 0;
+        return jdbcTemplate.update(
+                "delete from mail where id = ?",
+                id);
+
     }
 
     @Override
