@@ -18,7 +18,7 @@ public class MailRepositoryImpl implements MailRepository {
 
     @Override
     public List<Mail> getAllMail() {
-        log.info("Fetching all mail");
+        log.info("Fetching all mail..");
         return jdbcTemplate.query(
                 "select * from mail",
                 (resultSet, rowNum) ->
@@ -35,13 +35,15 @@ public class MailRepositoryImpl implements MailRepository {
 
     @Override
     public int saveMail(Mail mail) {
+        log.info("Saving mail..");
         return jdbcTemplate.update(
-                "insert into mail(sender, content, date, phoneNumber) VALUES (?,?,?,?)",
-                mail.getSender(), mail.getContent(), mail.getDate(), mail.getPhoneNumber());
+                "insert into mail(sender, content, date, phoneNumber, mail) VALUES (?,?,?,?,?)",
+                mail.getSender(), mail.getContent(), mail.getDate(), mail.getPhoneNumber(), mail.getMail());
     }
 
     @Override
     public int delete(int id) {
+        log.info("Deleting mail..");
         return jdbcTemplate.update(
                 "delete from mail where id = ?",
                 id);
@@ -50,6 +52,17 @@ public class MailRepositoryImpl implements MailRepository {
 
     @Override
     public Mail findById(int id) {
-        return null;
+        log.info("Finding mail..");
+        return jdbcTemplate.queryForObject("select * from mail where id = ?",
+                new Object[]{id}, (resultSet, rowNum) ->
+                        new Mail(
+                                resultSet.getInt("id"),
+                                resultSet.getString("sender"),
+                                resultSet.getString("content"),
+                                resultSet.getString("date"),
+                                resultSet.getInt("phoneNumber"),
+                                resultSet.getString("mail")
+                        ));
+
     }
 }
