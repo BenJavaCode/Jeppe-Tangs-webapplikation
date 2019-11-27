@@ -27,7 +27,8 @@ public class MailRepositoryImpl implements MailRepository {
                                 resultSet.getString("sender"),
                                 resultSet.getString("content"),
                                 resultSet.getString("date"),
-                                resultSet.getInt("phoneNumber")
+                                resultSet.getInt("phoneNumber"),
+                                resultSet.getString("mail")
                         )
         );
     }

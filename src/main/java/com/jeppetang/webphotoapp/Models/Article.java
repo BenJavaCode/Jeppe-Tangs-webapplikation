@@ -22,6 +22,8 @@ public class Article {
         this.gif = gif;
     }
 
+    public Article(int id)
+
     public int getId() {
         return id;
     }
