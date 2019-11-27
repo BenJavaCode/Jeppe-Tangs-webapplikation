@@ -22,7 +22,13 @@ public class Article {
         this.gif = gif;
     }
 
-    public Article(int id)
+    public Article(int id, String title, String videoContent, String pictureContent){
+        this.id = id;
+        this.title = title;
+        this.videoContent = videoContent;
+        this.pictureContent = pictureContent;
+
+    }
 
     public int getId() {
         return id;
