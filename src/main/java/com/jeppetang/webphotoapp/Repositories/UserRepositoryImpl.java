@@ -1,6 +1,8 @@
 package com.jeppetang.webphotoapp.Repositories;
 
 import com.jeppetang.webphotoapp.Models.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,6 +16,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Override
     public int saveUser(User user) {
