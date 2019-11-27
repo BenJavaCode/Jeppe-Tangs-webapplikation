@@ -1,14 +1,18 @@
 package com.jeppetang.webphotoapp.Repositories;
 
-import com.jeppetang.webphotoapp.Models.Article;
+import com.jeppetang.webphotoapp.Models.ArticleVideo;
 
 import java.util.List;
 
 public interface ArtikelRepository {
 
 
-    List<Article> getAllArticles();
-    int save(Article art);
-    int update(Article art);
-    int delete(int id);
+   public  List<ArticleVideo> getAllArticles();
+   public int save(ArticleVideo art);
+   public int update(ArticleVideo art);
+   public  int delete(int id);
+   public ArticleVideo getArtikel(int id);
+
+
+
 }
