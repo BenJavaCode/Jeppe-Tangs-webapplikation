@@ -7,15 +7,25 @@ public class Mail {
     private String content;
     private String date;
     private int phoneNumber;
+    private String mail;
 
     public Mail() {}
 
-    public Mail(int id, String sender, String date, String content, int phoneNumber) {
+    public Mail( int id, String sender, String content, String date, int phoneNumber, String mail) {
         this.id = id;
         this.sender = sender;
-        this.date = date;
         this.content = content;
+        this.date = date;
         this.phoneNumber = phoneNumber;
+        this.mail = mail;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public int getId() {
