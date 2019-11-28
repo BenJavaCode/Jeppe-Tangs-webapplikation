@@ -18,15 +18,15 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     @Override
     public List<ArticleVideo> allAv() {
         return jdbcTemplate.query(
-                "SELECT * FROM artikelVideo",
-                (resultset, rownumber) ->
+                "SELECT * FROM articleVideo",
+                (resultSet, rowNum) ->
                         new ArticleVideo(
-                                resultset.getInt("id"),
-                                resultset.getString("titel"),
-                                resultset.getString("paragraf"),
-                                resultset.getString("video"),
-                                resultset.getString("picture"),
-                                resultset.getString("gif")
+                                resultSet.getInt("id"),
+                                resultSet.getString("titel"),
+                                resultSet.getString("paragraf"),
+                                resultSet.getString("video"),
+                                resultSet.getString("picture"),
+                                resultSet.getString("gif")
                         )
 
         );
@@ -35,8 +35,8 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     @Override
     public List<ArticelDrone> allAd(){
         return jdbcTemplate.query(
-                "SELECT * FROM artikelDrone",
-                (resultSet, rownumber) ->
+                "SELECT * FROM articleDrone",
+                (resultSet, rowNum) ->
                         new ArticelDrone(
                                 resultSet.getInt("id"),
                                 resultSet.getString("titel"),
@@ -54,7 +54,7 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
 
         return jdbcTemplate.update(
 
-                "INSERT INTO artikelVideo(titel,paragraf,video,picture,gif) VALUES (?,?,?,?,?)",
+                "INSERT INTO articleVideo(titel,paragraf,video,picture,gif) VALUES (?,?,?,?,?)",
                 articleVideo.getTitle(),articleVideo.getParagraf(),articleVideo.getVideo(),articleVideo.getPicture(),articleVideo.getGif()
 
         );
@@ -63,7 +63,7 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     @Override
     public int saveAd(ArticelDrone articelDrone){
         return jdbcTemplate.update(
-                "INSERT INTO artikelDrone(titel,paragraf,video,gif) VALUES (?,?,?,?)",
+                "INSERT INTO articleDrone(titel,paragraf,video,gif) VALUES (?,?,?,?)",
                 articelDrone.getTitel(),articelDrone.getParagraf(),articelDrone.getVideo(),articelDrone.getGif()
         );
     }
@@ -73,7 +73,7 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     public int updateAv(ArticleVideo art) {
 
         return jdbcTemplate.update(
-                "UPDATE artikelVideo SET titel=?, paragraf=?,video=?,picture=?,gif=? Where id=?",
+                "UPDATE articleVideo SET titel=?, paragraf=?,video=?,picture=?,gif=? Where id=?",
                 art.getTitle(),art.getParagraf(),art.getVideo(),art.getPicture(),art.getGif(),art.getId()
 
         );
@@ -83,7 +83,7 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     public int updateAd(ArticelDrone articelDrone){
 
         return jdbcTemplate.update(
-                "UPDATE artikelDrone SET titel=?, paragraf=?, video=?, gif=? WHERE id=?",
+                "UPDATE articleDrone SET titel=?, paragraf=?, video=?, gif=? WHERE id=?",
                 articelDrone.getTitel(),articelDrone.getParagraf(),articelDrone.getVideo(),articelDrone.getGif(),articelDrone.getId()
         );
     }
@@ -91,14 +91,14 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     @Override
     public int deleteAv(int id) {
         return jdbcTemplate.update(
-                "DELETE FROM artikelVideo WHERE id=?", id
+                "DELETE FROM articleVideo WHERE id=?", id
         );
     }
 
     @Override
     public int deleteAd(int id){
         return jdbcTemplate.update(
-                "DELETE FROM artikelDrone WHERE id=?", id
+                "DELETE FROM articleDrone WHERE id=?", id
         );
     }
 
@@ -106,8 +106,8 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     @Override
     public ArticleVideo getAv(int id) {
         return jdbcTemplate.queryForObject(
-               "SELECT * FROM artikelVideo WHERE id=" +id,
-                (resultSet, rownumber) ->
+               "SELECT * FROM articleVideo WHERE id=" +id,
+                (resultSet, rowNum) ->
 
                         new ArticleVideo(
                                 resultSet.getInt("id"),
@@ -125,8 +125,8 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     @Override
     public ArticelDrone getAd(int id){
         return jdbcTemplate.queryForObject(
-                "SELECT * FROM artikelDrone WHERE id=" +id,
-                (resultSet, rownumber) ->
+                "SELECT * FROM articleDrone WHERE id=" +id,
+                (resultSet, rowNum) ->
                         new ArticelDrone(
                                 resultSet.getInt("id"),
                                 resultSet.getString("titel"),
