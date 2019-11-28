@@ -73,7 +73,7 @@ public class ArtikelRepositoryImpl implements ArtikelRepository{
     public int updateAv(ArticleVideo art) {
 
         return jdbcTemplate.update(
-                "UPDATE artikelVideo SET titel=?, paragraf=?,video=?,picture=?,gif=?, Where id=?",
+                "UPDATE artikelVideo SET titel=?, paragraf=?,video=?,picture=?,gif=? Where id=?",
                 art.getTitle(),art.getParagraf(),art.getVideo(),art.getPicture(),art.getGif(),art.getId()
 
         );
