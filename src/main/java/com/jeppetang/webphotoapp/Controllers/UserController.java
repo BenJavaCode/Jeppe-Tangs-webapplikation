@@ -26,4 +26,8 @@ public class UserController {
         userServices.addUser(user);
         return "redirect:/";
     }
+
+
+
+
 }
