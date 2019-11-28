@@ -25,7 +25,7 @@ public class CvRepositoryImpl implements CvRepository {
     public int updateCv(Cv cv){
 
         return jdbcTemplate.update(
-                "update cv set title = ?, mainText = ?, mailAdress = ?, phoneNumber = ?, previousWork = ?, cvPicture = ? "
+                "update cv set  mainText = ?, mailAdress = ?, phoneNumber = ?, previousWork = ?, cvPicture = ? where title=?"
         );
     }
 
