@@ -36,8 +36,13 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter {
     //Bestemmer hvilke roler der kan tilgå hvilke html sider
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
-                .antMatchers("/").permitAll()
-                .and().formLogin();
+        http.
+                authorizeRequests()
+                .antMatchers("/createUser").hasRole(ADMIN)
+                .antMatchers("/", "/home").permitAll()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll();
     }
 }
