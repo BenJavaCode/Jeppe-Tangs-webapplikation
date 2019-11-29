@@ -18,13 +18,13 @@ public class CvController {
 
    @GetMapping("/Cv")
     public String Cv(Model model){
-        model.addAttribute("cv", Cv());
+        model.addAttribute("cv", new  Cv());
         return "Cv";
 
     }
 
     @PostMapping("/Cv")
-    public String Cv(@ModelAttribute Cv cv, Model model){
+    public String updateCv(@ModelAttribute Cv cv, Model model){
 
        cvService.updateTheCV(cv);
        cvService.saveTheCv(cv);
