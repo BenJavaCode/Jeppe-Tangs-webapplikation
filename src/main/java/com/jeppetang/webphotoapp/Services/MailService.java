@@ -1,9 +1,7 @@
 package com.jeppetang.webphotoapp.Services;
 
 import com.jeppetang.webphotoapp.Models.Mail;
-import com.jeppetang.webphotoapp.Models.Mailer;
 
-import javax.mail.MessagingException;
 import java.util.List;
 
 public interface MailService {
