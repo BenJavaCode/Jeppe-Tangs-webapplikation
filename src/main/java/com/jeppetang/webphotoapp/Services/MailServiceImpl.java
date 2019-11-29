@@ -1,10 +1,18 @@
 package com.jeppetang.webphotoapp.Services;
 
 import com.jeppetang.webphotoapp.Models.Mail;
+import com.jeppetang.webphotoapp.Models.Mailer;
 import com.jeppetang.webphotoapp.Repositories.MailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @Service
@@ -34,4 +42,21 @@ public class MailServiceImpl implements MailService {
         return mailRepository.findById(id);
 
     }
+
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    @Override
+    public void sendEmail() {
+
+        SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo("itamar.lokzinsky@gmail.com");
+
+        msg.setSubject("Ang dit lægebesøg");
+        msg.setText("Jeg er ked af at meddele dig at du har gonore i dine bihulder. mvh din læge");
+
+        javaMailSender.send(msg);
+
+    }
+
 }
