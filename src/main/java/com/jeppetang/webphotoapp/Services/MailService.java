@@ -12,5 +12,6 @@ public interface MailService {
     void saveMail(Mail mail);
     void delete(int id);
     Mail findById(int id);
+    public void sendEmail();
 
 }

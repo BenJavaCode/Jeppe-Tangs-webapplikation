@@ -15,14 +15,14 @@ public class CvRepositoryImpl implements CvRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    private final Logger log = (Logger) LoggerFactory.getLogger(this.getClass());
+   // private final Logger log = (Logger) LoggerFactory.getLogger(this.getClass());
 
 
 
     @Override
     public int saveCv(Cv cv) {
 
-        log.info("Saving Cv..");
+        //log.info("Saving Cv..");
 
         return jdbcTemplate.update(
                 "insert into cv(title, mainText, mailAddress, phoneNumber, previousWork, cvPicture) values (?,?,?,?,?,?)"
@@ -34,10 +34,10 @@ public class CvRepositoryImpl implements CvRepository {
     @Override
     public int updateCv(Cv cv){
 
-        log.info("Updating Cv..");
+        //log.info("Updating Cv..");
 
         return jdbcTemplate.update(
-                "update cv set  mainText = ?, mailAdress = ?, phoneNumber = ?, previousWork = ?, cvPicture = ? where title=?"
+                "update cv set  mainText = ?, mailAddress = ?, phoneNumber = ?, previousWork = ?, cvPicture = ? where title=?"
         );
     }
 

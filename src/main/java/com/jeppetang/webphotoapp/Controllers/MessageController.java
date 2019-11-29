@@ -22,8 +22,8 @@ public class MessageController {
     @RequestMapping("/mail")
     public String mail() throws MessagingException {
 
-        mailService.send("benjalundquist@gmail.com", "A test mail", "Body of the test mail");
+        mailService.sendEmail();
 
-        return "Mail sent";
+        return "email sent";
     }
 }
