@@ -24,7 +24,7 @@ public class CvController {
     }
 
     @PostMapping("/Cv")
-    public String updateCv(@ModelAttribute Cv cv, Model model){
+    public String updateCv(@ModelAttribute Cv cv){
 
        cvService.updateTheCV(cv);
        cvService.saveTheCv(cv);
