@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <form th:action="@{/saveMail}" th:object="${create}" method="post" >
+        <p><input type="hidden" value="*{id}" th:field="*{id}"></p>
+        <p> Navn: <input type="text" value="*{sender}" th:field="*{sender}"></p>
+        <p> Din besked: <input type="text" value="*{content}" th:field="*{content}"></p>
+        <p> <input type="hidden" value="*{date}" th:field="*{date}"></p>
+        <p> evt tlf: <input type="number" value="*{phoneNumber}" th:field="*{phoneNumber}"></p>
+        <p> mail: <input type="text" value="*{mail}" th:field="*{mail}"></p>
+        <input type="submit" value="send">
+
+    </form>
+</div>
+
+</body>
+</html>

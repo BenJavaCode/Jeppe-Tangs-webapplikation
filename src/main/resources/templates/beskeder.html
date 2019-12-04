@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <table>
+
+        <th>navn</th>
+        <th>besked</th>
+        <th>dato</th>
+        <th>tlf</th>
+        <th>mail</th>
+        <th>svar</th>
+        <th>delete</th>
+
+        <tr th:each="a : ${mails}" >
+
+
+            <td th:text="${a.sender}"></td>
+            <td th:text="${a.content}"></td>
+            <td th:text="${a.date}"></td>
+            <td th:text="${a.phoneNumber}"></td>
+            <td th:text="${a.mail}"></td>
+            <td><a th:href="${'/view/' + a.id}"> Se besked/svar</a></td>
+            <td><a th:href="${'/delete/' + a.id}">DELETE</a></td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
