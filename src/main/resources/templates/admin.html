@@ -4,16 +4,185 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+
+    /* General */
+
+    div.wrapper {
+        position: relative;
+        min-height: 100vh;
+    }
+
+
+    /* General end*/
+
+    /* navbar */
+    div.nav{
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        padding: 5px 5px 5px 5px;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: snow;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: lavender;
+    }
+
+    a:active {
+        background-color: lavender;
+    }
+    /* navbar end */
+
+    /* main content */
+
+    div.col{
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 120px;
+
+    }
+
+    div.row{
+        display: flex;
+        flex-direction: row;
+        justify-content: normal;
+        height: 500px;
+
+    }
+
+    div.cont{
+        width: 50%;
+        padding-right: 2.5px;
+        padding-bottom: 2.5px;
+        margin-bottom: 20px;
+    }
+    div.contL{
+        width: 50%;
+        padding-bottom: 2.5px;
+        margin-bottom: 20px;
+    }
+
+    /* main content ends */
+
+    /* Footer */
+
+    div.footer{
+        color: black;
+        height: 50px;
+        width: 99.2%;
+        position: absolute;
+        bottom: 0;
+
+        display: flex;
+        justify-content: space-between;
+
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+
+        padding: 7px 5px 5px 5px;
+
+
+    }
+    a.foot {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    a.foot:hover{
+        background-color: lavender;
+    }
+
+    /* Footer ends */
+
+
+
+
+
+</style>
+
 <body>
-<div>
+<div class="wrapper">
+<div class="nav">
 
-        <tr>
-           <p>Du har <td th:text="${status}"> </td> ulæste beskeder</p>
-        </tr>
+    <ul>
+        <li><a href="/admin">Admin home</a></li>
+        <li> <a href="/beskeder">Beskeder <td th:text="${status}"> </td></a></li>
+        <li style="float:right"><a href="#about">Logout</a></li>
+    </ul>
+
+</div>
 
 
 
+<div class="col">
 
+    <div class="row">
+
+        <div class="cont">
+            <h2>Lav drone-artikel</h2>
+           <a href="/drone-form" > <img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/drone-4302861_1280.jpg"width="100%" height="90%"> </a>
+        </div>
+
+        <div class="contL">
+            <h2>Rediger drone-artikler</h2>
+            <a href="/drone-red"><img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/drone-4302860_1280.jpg" width="100%" height="90%"> </a>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="cont">
+            <h2>Lav video-artikel</h2>
+            <a href="/artikel-form"><img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/kamera+mand.jpg" width="100%" height="90%"></a>
+        </div>
+
+        <div class="contL">
+            <h2>Rediger video-artikler</h2>
+            <a href="/artikel-red"><img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/photo-of-man-holding-camera-3062541+(1)(1).jpg" width="100%" height="90%"></a>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <div class="footer">
+
+        <div style="padding-left: 15px">
+            <p> Alle rettigheder tilhører Jeppe Tang</p>
+        </div>
+
+        <div style="padding-right: 15px">
+            <a class="foot" style="float:right" href="/login">Login</a>
+        </div>
+
+
+    </div>
 
 </div>
 
