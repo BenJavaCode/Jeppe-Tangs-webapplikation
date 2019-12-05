@@ -4,17 +4,17 @@ public class ArticleVideo {
 
     private int id;
     private String title;
+    private String paragraf;
     private String video;
     private String picture;
     private String gif;
-    private String paragraf;
+
 
 
     public ArticleVideo() {
     }
 
-
-    public ArticleVideo(int id, String title, String video, String picture, String gif, String paragraf) {
+    public ArticleVideo(int id, String title, String paragraf, String video, String picture, String gif) {
         this.id = id;
         this.title = title;
         this.video = video;

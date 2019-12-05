@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>DeleteAD</title>
+</head>
+<body>
+<form action = "#" th:action="@{/deleteAD}" th:object="${articleDrone} "method="post">
+
+    <p>Vil du gerne slette:</p>
+    <input type="text" th:field="*{id}"/>
+    <input type="text" th:field="*{video}"/>
+    <input type="text" th:field="*{gif}"/>
+
+
+
+    <input type="submit" value="Submit">
+
+</form>
+
+
+
+
+</body>
+</html>

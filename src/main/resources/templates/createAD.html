@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateAD</title>
+</head>
+<body>
+<h1>Opret ny artikel</h1>
+
+<form action = "#" th:action="@{/createAD}" th:object="${articleDrone}" enctype="multipart/form-data" method="post">
+
+    <p>Titel</p>
+    <input type = "text" th:field="*{titel}">
+
+    <p>Paragraf</p>
+    <input type = "text" th:field="*{paragraf}">
+
+    <p>Video</p>
+    <input type="file" name="videoFile">
+    <input type="text" name="folderName1">
+
+    <p>Gif</p>
+    <input type="file" name="gifFile">
+    <input type="text" name="folderName2">
+
+
+    <input type="submit" value="submit">
+
+
+</form>
+</body>
+</html>
