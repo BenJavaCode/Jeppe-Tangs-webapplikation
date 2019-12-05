@@ -80,6 +80,7 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
+
     }
 
     a.foot:hover{
@@ -87,6 +88,54 @@
     }
 
     /* Footer ends */
+
+    /*  Hero section */
+
+    div.hero{
+        height: 400px;
+        width: 100%;
+        padding-bottom: 50px;
+    }
+
+    /*  Hero section ends */
+
+
+    /* Form content*/
+
+    div.colform{
+
+        padding-bottom:  125px;
+    }
+    div.colordiv{
+        height: 400px;
+        width: 100%;
+        background-color: lavender;
+        padding-top: 25px;
+        padding-bottom: 25px;
+
+        display: flex;
+        flex-direction: row;
+    }
+
+    div.box{
+        width: 50%;
+        height: 100%;
+
+        background-color: white;
+
+
+    }
+
+    div.formK{
+        margin-left: 20px;
+    }
+
+    .colorshceme{
+        background-color: lavender;
+    }
+
+    /* Form contetn ends*/
+
 
 </style>
 
@@ -103,22 +152,56 @@
         </ul>
 
     </div>
+    
+    
+    <div class="hero">
+        
+        <img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/drone-4302860_1280.jpg" width="100%" height="100%">
+    </div>
+
+
+
+    <div class="colform">
+        <div class="colordiv">
+
+
+
+        <div class="box">
+
+            <img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/drone-4302860_1280.jpg" width="100%" height="100%">
+
+        </div>
+
+        <div class="box">
+
+
+            <div class="formK">
+                <h2> Kontakt mig </h2>
+                <form th:action="@{/saveMail}" th:object="${create}" method="post" >
+                    <p><input type="hidden" value="*{id}" th:field="*{id}"></p>
+                    <p> Navn:</p>
+                    <input class="colorshceme" type="text" value="*{sender}" th:field="*{sender}" placeholder="Navn eller firmanavn..">
+                    <p> Din besked:</p>
+                    <textarea  class="colorshceme" type="text" value="*{content}" th:field="*{content}" rows="4" cols="50" placeholder="Din besked"></textarea>
+                    <p> <input type="hidden" value="*{date}" th:field="*{date}"></p>
+                    <p> Evt tlf:</p>
+                    <input  class="colorshceme" type="number" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Evt tlf..">
+                    <p> mail:</p>
+                    <input  class="colorshceme" type="text" value="*{mail}" th:field="*{mail}" placeholder="Din mail..">
+                    <input class="colorshceme" type="submit" value="send">
+
+                </form>
+            </div>
+
+        </div>
+
+        </div>
+    </div>
 
 
 
 
-<div>
-    <form th:action="@{/saveMail}" th:object="${create}" method="post" >
-        <p><input type="hidden" value="*{id}" th:field="*{id}"></p>
-        <p> Navn: <input type="text" value="*{sender}" th:field="*{sender}"></p>
-        <p> Din besked: <input type="text" value="*{content}" th:field="*{content}"></p>
-        <p> <input type="hidden" value="*{date}" th:field="*{date}"></p>
-        <p> evt tlf: <input type="number" value="*{phoneNumber}" th:field="*{phoneNumber}"></p>
-        <p> mail: <input type="text" value="*{mail}" th:field="*{mail}"></p>
-        <input type="submit" value="send">
 
-    </form>
-</div>
 
     <div class="footer">
 

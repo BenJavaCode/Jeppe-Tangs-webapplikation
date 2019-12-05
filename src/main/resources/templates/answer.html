@@ -4,50 +4,232 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+    /* General */
+
+    div.wrapper {
+        position: relative;
+        min-height: 100vh;
+    }
+
+    /* General end*/
+
+    /* navbar */
+    div.nav{
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        padding: 5px 5px 5px 5px;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: snow;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: lavender;
+    }
+
+    a:active {
+        background-color: lavender;
+    }
+    /* navbar end */
+
+    /* Footer */
+
+    div.footer{
+        color: black;
+        height: 50px;
+        width: 99.2%;
+        position: absolute;
+        bottom: 0;
+
+        display: flex;
+        justify-content: space-between;
+
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+
+        padding: 7px 5px 5px 5px;
+
+
+    }
+    a.foot {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    a.foot:hover{
+        background-color: lavender;
+    }
+
+    /* Footer ends */
+
+    /* Tabel */
+
+    div.wrapping{
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    #kunder {
+        font-family: sans-serif;
+        font-size: 13px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #kunder td, #kunder th {
+        border: 0.5px solid black;
+        padding: 8px;
+    }
+
+
+
+    #kunder tr:hover {background-color: lavender;}
+
+    #kunder th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: lavender;
+        color: black;
+        font-size: 16px;
+    }
+
+    /* Tabel ends */
+
+    /* form */
+
+    div.form{
+
+        padding-bottom: 100px;
+
+    }
+
+
+
+    /* form ends */
+
+
+
+</style>
+
+
 <body>
 
-<div>
-    <table>
+<div class="wrapper">
+    <div class="nav">
 
-        <th>navn</th>
-        <th>besked</th>
-        <th>dato</th>
-        <th>tlf</th>
-        <th>mail</th>
-        <th>svar</th>
+        <ul>
+            <li><a href="/admin">Admin home</a></li>
+            <li> <a href="/beskeder">Beskeder <td th:text="${status}"> </td></a></li>
+            <li style="float:right"><a href="#about">Logout</a></li>
+        </ul>
 
-        <tr th:each="a : ${beskeder}" >
-
-            <td th:text="${a.sender}"></td>
-            <td th:text="${a.content}"></td>
-            <td th:text="${a.date}"></td>
-            <td th:text="${a.phoneNumber}"></td>
-            <td th:text="${a.mail}"></td>
-            <td><a th:href="${'/view/' + a.id}"> Se besked/svar</a></td>
-
-        </tr>
-
-    </table>
-
-</div>
+    </div>
 
 
+    <div class="wrapping">
 
-<div>
+        <table id="kunder">
 
-    <form action="#" th:action="@{/SendAnswer}" th:object="${svar}" method="post">
-        <p> <input type="hidden" th:field="*{id}" th:value="*{id}"/></p>
-        <p><input type="hidden" th:field="*{sender}" th:value="*{sender}"/></p>
-        <p>Besked <input type="text" th:field="*{content}" th:value="*{content}" /></p>
-        <p> <input type="hidden" th:field="*{phoneNumber}" th:value="*{phoneNumber}" /></p>
-        <p><input type="hidden" th:field="*{mail}" th:value="*{mail}" /></p>
-        <input type="hidden" th:field="*{date}" th:value="*{date}">
-        <p><input type="hidden" th:field="*{status}" th:value="*{status}"></p>
+            <th>Dato</th>
+            <th>Mail</th>
+            <th>Navn</th>
+            <th>Tlf</th>
+            <th>Besked</th>
+            <th>Delete</th>
 
-        <p><input type="submit" value="Send" /></p>
-    </form>
+            <tr th:each="a : ${beskeder}" >
+
+
+                <td th:text="${a.date}"></td>
+                <td th:text="${a.mail}"></td>
+                <td th:text="${a.sender}"></td>
+                <td th:text="${a.phoneNumber}"></td>
+                <td th:text="${a.content}"></td>
+                <td><a th:href="${'/delete/' + a.id}">DELETE</a></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="form">
+
+        <form action="#" th:action="@{/SendAnswer}" th:object="${svar}" method="post">
+            <p> <input type="hidden" th:field="*{id}" th:value="*{id}"/></p>
+            <p><input type="hidden" th:field="*{sender}" th:value="*{sender}"/></p>
+            <p>Svar:</p>
+            <textarea type="text" th:field="*{content}" th:value="*{content}" rows="4" cols="50"/>
+            <p> <input type="hidden" th:field="*{phoneNumber}" th:value="*{phoneNumber}" /></p>
+            <p><input type="hidden" th:field="*{mail}" th:value="*{mail}" /></p>
+            <input type="hidden" th:field="*{date}" th:value="*{date}">
+            <p><input type="hidden" th:field="*{status}" th:value="*{status}"></p>
+
+            <p><input type="submit" value="Send" /></p>
+        </form>
+
+    </div>
+
+    <div class="footer">
+
+        <div style="padding-left: 15px">
+            <p> Alle rettigheder tilhører Jeppe Tang</p>
+        </div>
+
+        <div style="padding-right: 15px">
+            <a class="foot" style="float:right" href="/login">Login</a>
+        </div>
+
+
+    </div>
+
 
 </div>
 
 </body>
+
+<script>
+
+    var cells = document.getElementById("kunder").getElementsByTagName("td");
+
+
+    for ( var i = 0; i < cells.length; i++) {
+
+
+        if (cells[i].innerHTML == "Svar fra Jeppe Tang") {
+            cells[i].style.backgroundColor = "lightblue";
+            cells[i-1].style.backgroundColor = "lightblue";
+            cells[i-2].style.backgroundColor = "lightblue";
+            cells[i+1].style.backgroundColor = "lightblue";
+            cells[i+2].style.backgroundColor = "lightblue";
+            cells[i+3].style.backgroundColor = "lightblue";
+        }
+    }
+
+</script>
 </html>
