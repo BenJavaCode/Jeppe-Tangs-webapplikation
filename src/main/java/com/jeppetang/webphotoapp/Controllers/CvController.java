@@ -18,7 +18,7 @@ public class CvController {
 
    @GetMapping("/Cv")
     public String Cv(Model model){
-        model.addAttribute("cv", new  Cv());
+        model.addAttribute("cv", new Cv());
         return "Cv";
 
     }
