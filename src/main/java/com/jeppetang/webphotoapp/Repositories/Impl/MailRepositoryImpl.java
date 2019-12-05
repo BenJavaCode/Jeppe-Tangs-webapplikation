@@ -1,6 +1,7 @@
-package com.jeppetang.webphotoapp.Repositories;
+package com.jeppetang.webphotoapp.Repositories.Impl;
 
 import com.jeppetang.webphotoapp.Models.Mail;
+import com.jeppetang.webphotoapp.Repositories.MailRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class MailRepositoryImpl implements MailRepository {
     public List<Mail> getAllMail() {
         log.info("Fetching all mail..");
         return jdbcTemplate.query(
-                "select * from mail",
+                "select* from mail WHERE status !=4",
                 (resultSet, rowNum) ->
                         new Mail(
                                 resultSet.getInt("id"),
@@ -28,7 +29,8 @@ public class MailRepositoryImpl implements MailRepository {
                                 resultSet.getString("content"),
                                 resultSet.getString("date"),
                                 resultSet.getInt("phoneNumber"),
-                                resultSet.getString("mail")
+                                resultSet.getString("mail"),
+                                resultSet.getInt("status")
                         )
         );
     }
@@ -37,8 +39,8 @@ public class MailRepositoryImpl implements MailRepository {
     public int saveMail(Mail mail) {
         log.info("Saving mail..");
         return jdbcTemplate.update(
-                "insert into mail(sender, content, date, phoneNumber, mail) VALUES (?,?,?,?,?)",
-                mail.getSender(), mail.getContent(), mail.getDate(), mail.getPhoneNumber(), mail.getMail());
+                "insert into mail(sender, content, date, phoneNumber, mail,status) VALUES (?,?,?,?,?,?)",
+                mail.getSender(), mail.getContent(), mail.getDate(), mail.getPhoneNumber(), mail.getMail(),mail.getStatus());
     }
 
     @Override
@@ -61,8 +63,48 @@ public class MailRepositoryImpl implements MailRepository {
                                 resultSet.getString("content"),
                                 resultSet.getString("date"),
                                 resultSet.getInt("phoneNumber"),
-                                resultSet.getString("mail")
+                                resultSet.getString("mail"),
+                                resultSet.getInt("status")
                         ));
 
+    }
+
+    @Override
+    public List<Mail> findByMail(String mail) {
+        log.info("Fetching all mail..");
+        return jdbcTemplate.query(
+                "select* from mail WHERE mail = ?",
+                new Object[]{mail},  (resultSet, rowNum) ->
+                        new Mail(
+                                resultSet.getInt("id"),
+                                resultSet.getString("sender"),
+                                resultSet.getString("content"),
+                                resultSet.getString("date"),
+                                resultSet.getInt("phoneNumber"),
+                                resultSet.getString("mail"),
+                                resultSet.getInt("status")
+                        )
+        );
+    }
+
+
+    @Override
+    public int countUnseen(){
+
+        log.info("counting unseen..");
+        String sql = "SELECT count(*) AS NUMBEROFCOLUMNS FROM mail WHERE status = 0";
+        int unanswered = jdbcTemplate.queryForObject(sql, Integer.class);
+
+        return unanswered;
+    }
+
+    @Override
+    public int flipStatus(Mail mail1, int sec){
+        log.info("flipping status to 1(seen)");
+
+        return jdbcTemplate.update(
+                "UPDATE mail SET status=? WHERE id=?",
+        sec,mail1.getId()
+        );
     }
 }

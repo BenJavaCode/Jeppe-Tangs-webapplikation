@@ -1,7 +1,8 @@
-package com.jeppetang.webphotoapp.Services;
+package com.jeppetang.webphotoapp.Services.Impl;
 
 import com.jeppetang.webphotoapp.Models.Cv;
 import com.jeppetang.webphotoapp.Repositories.CvRepository;
+import com.jeppetang.webphotoapp.Services.CvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

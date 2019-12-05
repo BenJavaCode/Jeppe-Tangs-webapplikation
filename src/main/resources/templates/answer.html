@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <table>
+
+        <th>navn</th>
+        <th>besked</th>
+        <th>dato</th>
+        <th>tlf</th>
+        <th>mail</th>
+        <th>svar</th>
+
+        <tr th:each="a : ${beskeder}" >
+
+            <td th:text="${a.sender}"></td>
+            <td th:text="${a.content}"></td>
+            <td th:text="${a.date}"></td>
+            <td th:text="${a.phoneNumber}"></td>
+            <td th:text="${a.mail}"></td>
+            <td><a th:href="${'/view/' + a.id}"> Se besked/svar</a></td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+
+
+<div>
+
+    <form action="#" th:action="@{/SendAnswer}" th:object="${svar}" method="post">
+        <p> <input type="hidden" th:field="*{id}" th:value="*{id}"/></p>
+        <p><input type="hidden" th:field="*{sender}" th:value="*{sender}"/></p>
+        <p>Besked <input type="text" th:field="*{content}" th:value="*{content}" /></p>
+        <p> <input type="hidden" th:field="*{phoneNumber}" th:value="*{phoneNumber}" /></p>
+        <p><input type="hidden" th:field="*{mail}" th:value="*{mail}" /></p>
+        <input type="hidden" th:field="*{date}" th:value="*{date}">
+        <p><input type="hidden" th:field="*{status}" th:value="*{status}"></p>
+
+        <p><input type="submit" value="Send" /></p>
+    </form>
+
+</div>
+
+</body>
+</html>

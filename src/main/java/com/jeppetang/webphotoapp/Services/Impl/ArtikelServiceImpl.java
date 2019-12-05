@@ -1,15 +1,16 @@
-package com.jeppetang.webphotoapp.Services;
+package com.jeppetang.webphotoapp.Services.Impl;
 
 import com.jeppetang.webphotoapp.Models.ArticelDrone;
 import com.jeppetang.webphotoapp.Models.ArticleVideo;
 import com.jeppetang.webphotoapp.Repositories.ArtikelRepository;
+import com.jeppetang.webphotoapp.Services.ArtikelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ArtikelServiceImpl implements ArtikelService{
+public class ArtikelServiceImpl implements ArtikelService {
 
     @Autowired
     ArtikelRepository artikelRepository;

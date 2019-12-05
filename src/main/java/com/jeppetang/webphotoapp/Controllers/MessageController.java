@@ -22,7 +22,7 @@ public class MessageController {
     @RequestMapping("/mail")
     public String mail() throws MessagingException {
 
-        mailService.sendEmail();
+        //mailService.sendEmail();
 
         return "email sent";
     }
