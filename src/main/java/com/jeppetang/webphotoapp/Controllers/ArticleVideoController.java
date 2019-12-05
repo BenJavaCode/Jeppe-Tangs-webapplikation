@@ -17,13 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ArticleVideoController {
 
     @Autowired
-    ArtikelRepository artikelRepository;
-
-    @Autowired
     S3Service s3Service;
-
-    @Autowired
-    AmazonS3 s3client;
 
     @Autowired
     ArtikelService artikelService;
@@ -37,10 +31,10 @@ public class ArticleVideoController {
         return "createAV";
     }
     @RequestMapping(value = "createAV", method = RequestMethod.POST)
-    public String createAV(@ModelAttribute ArticleVideo articleVideo, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "folderName1") String folderName1, @RequestPart(value = "pictureFile") MultipartFile pictureFile, @RequestPart(value = "folderName2") String folderName2) {
-        articleVideo.setVideo(s3Service.uploadFile(videoFile, folderName1));
-        articleVideo.setPicture(s3Service.uploadFile(pictureFile, folderName2));
-        artikelRepository.saveAv(articleVideo);
+    public String createAV(@ModelAttribute ArticleVideo articleVideo, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "pictureFile") MultipartFile pictureFile) {
+        articleVideo.setVideo(s3Service.uploadFile(videoFile, "videos"));
+        articleVideo.setPicture(s3Service.uploadFile(pictureFile, "pictures"));
+        artikelService.storeAv(articleVideo);
         return "redirect:/";
     }
     

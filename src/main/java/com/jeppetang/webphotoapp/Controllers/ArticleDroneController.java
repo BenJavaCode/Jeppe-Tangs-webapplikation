@@ -22,12 +22,8 @@ public class ArticleDroneController {
     @Autowired
     S3Service s3Service;
 
-    @Autowired
-    AmazonS3 s3client;
-
     @Value("${jsa.s3.bucket}")
     String bucketName;
-
 
     @GetMapping("/createAD")
     public String createAD(Model model) {
@@ -35,11 +31,10 @@ public class ArticleDroneController {
         return "createAD";
     }
 
-
     @RequestMapping(value = "createAD", method = RequestMethod.POST)
-    public String createAD(@ModelAttribute ArticelDrone articelDrone, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "folderName1") String folderName1, @RequestPart(value = "gifFile") MultipartFile gifFile, @RequestPart(value = "folderName2") String folderName2) {
-        articelDrone.setVideo(s3Service.uploadFile(videoFile, folderName1));
-        articelDrone.setGif(s3Service.uploadFile(gifFile, folderName2));
+    public String createAD(@ModelAttribute ArticelDrone articelDrone, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "gifFile") MultipartFile gifFile) {
+        articelDrone.setVideo(s3Service.uploadFile(videoFile, "videos"));
+        articelDrone.setGif(s3Service.uploadFile(gifFile, "gifs"));
         artikelService.storeAd(articelDrone);
         return "redirect:/";
     }
