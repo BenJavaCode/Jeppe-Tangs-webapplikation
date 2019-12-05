@@ -1,6 +1,7 @@
-package com.jeppetang.webphotoapp.Repositories;
+package com.jeppetang.webphotoapp.Repositories.Impl;
 
 import com.jeppetang.webphotoapp.Models.Cv;
+import com.jeppetang.webphotoapp.Repositories.CvRepository;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

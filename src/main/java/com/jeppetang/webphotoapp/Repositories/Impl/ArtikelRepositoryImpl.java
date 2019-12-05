@@ -1,7 +1,8 @@
-package com.jeppetang.webphotoapp.Repositories;
+package com.jeppetang.webphotoapp.Repositories.Impl;
 
 import com.jeppetang.webphotoapp.Models.ArticelDrone;
 import com.jeppetang.webphotoapp.Models.ArticleVideo;
+import com.jeppetang.webphotoapp.Repositories.ArtikelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class ArtikelRepositoryImpl implements ArtikelRepository{
+public class ArtikelRepositoryImpl implements ArtikelRepository {
 
 
     @Autowired

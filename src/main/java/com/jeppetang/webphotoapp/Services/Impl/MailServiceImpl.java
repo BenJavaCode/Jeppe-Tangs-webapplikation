@@ -1,7 +1,8 @@
-package com.jeppetang.webphotoapp.Services;
+package com.jeppetang.webphotoapp.Services.Impl;
 
 import com.jeppetang.webphotoapp.Models.Mail;
 import com.jeppetang.webphotoapp.Repositories.MailRepository;
+import com.jeppetang.webphotoapp.Services.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;

@@ -1,7 +1,8 @@
-package com.jeppetang.webphotoapp.Services;
+package com.jeppetang.webphotoapp.Services.Impl;
 
 import com.jeppetang.webphotoapp.Models.User;
 import com.jeppetang.webphotoapp.Repositories.UserRepository;
+import com.jeppetang.webphotoapp.Services.UserServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
