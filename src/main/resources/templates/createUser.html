@@ -4,6 +4,87 @@
     <meta charset="UTF-8">
     <title></title>
 </head>
+<style>
+
+    /* General */
+
+    div.wrapper {
+        position: relative;
+        min-height: 100vh;
+    }
+
+    /* General end*/
+
+    /* navbar */
+    div.nav{
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+        padding: 5px 5px 5px 5px;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: snow;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: lavender;
+    }
+
+    a:active {
+        background-color: lavender;
+    }
+    /* navbar end */
+
+    /* Footer */
+
+    div.footer{
+        color: black;
+        height: 50px;
+        width: 99.2%;
+        position: absolute;
+        bottom: 0;
+
+        display: flex;
+        justify-content: space-between;
+
+        border-color: black;
+        border-style: solid;
+        border-width: 1px;
+
+        padding: 7px 5px 5px 5px;
+
+
+    }
+    a.foot {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    a.foot:hover{
+        background-color: lavender;
+    }
+
+    /* Footer ends */
+</style>
 <body>
 
 <form action="#" th:action="@{/createUser}" th:object="${user}" method="post">

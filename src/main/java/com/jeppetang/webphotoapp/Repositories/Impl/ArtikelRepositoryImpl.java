@@ -1,6 +1,6 @@
 package com.jeppetang.webphotoapp.Repositories.Impl;
 
-import com.jeppetang.webphotoapp.Models.ArticelDrone;
+import com.jeppetang.webphotoapp.Models.ArticleDrone;
 import com.jeppetang.webphotoapp.Models.ArticleVideo;
 import com.jeppetang.webphotoapp.Repositories.ArtikelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +34,11 @@ public class ArtikelRepositoryImpl implements ArtikelRepository {
     }
 
     @Override
-    public List<ArticelDrone> allAd(){
+    public List<ArticleDrone> allAd(){
         return jdbcTemplate.query(
                 "SELECT * FROM articleDrone",
                 (resultSet, rowNum) ->
-                        new ArticelDrone(
+                        new ArticleDrone(
                                 resultSet.getInt("id"),
                                 resultSet.getString("titel"),
                                 resultSet.getString("paragraf"),
@@ -62,10 +62,10 @@ public class ArtikelRepositoryImpl implements ArtikelRepository {
     }
 
     @Override
-    public int saveAd(ArticelDrone articelDrone){
+    public int saveAd(ArticleDrone articleDrone){
         return jdbcTemplate.update(
                 "INSERT INTO articleDrone(titel,paragraf,video,gif) VALUES (?,?,?,?)",
-                articelDrone.getTitel(),articelDrone.getParagraf(),articelDrone.getVideo(),articelDrone.getGif()
+                articleDrone.getTitle(), articleDrone.getParagraf(), articleDrone.getVideo(), articleDrone.getGif()
         );
     }
 
@@ -81,11 +81,11 @@ public class ArtikelRepositoryImpl implements ArtikelRepository {
     }
 
     @Override
-    public int updateAd(ArticelDrone articelDrone){
+    public int updateAd(ArticleDrone articleDrone){
 
         return jdbcTemplate.update(
                 "UPDATE articleDrone SET titel=?, paragraf=?, video=?, gif=? WHERE id=?",
-                articelDrone.getTitel(),articelDrone.getParagraf(),articelDrone.getVideo(),articelDrone.getGif(),articelDrone.getId()
+                articleDrone.getTitle(), articleDrone.getParagraf(), articleDrone.getVideo(), articleDrone.getGif(), articleDrone.getId()
         );
     }
 
@@ -124,11 +124,11 @@ public class ArtikelRepositoryImpl implements ArtikelRepository {
     }
 
     @Override
-    public ArticelDrone getAd(int id){
+    public ArticleDrone getAd(int id){
         return jdbcTemplate.queryForObject(
                 "SELECT * FROM articleDrone WHERE id=" +id,
                 (resultSet, rowNum) ->
-                        new ArticelDrone(
+                        new ArticleDrone(
                                 resultSet.getInt("id"),
                                 resultSet.getString("titel"),
                                 resultSet.getString("paragraf"),

@@ -1,21 +1,21 @@
 package com.jeppetang.webphotoapp.Models;
 
-public class ArticelDrone {
+public class ArticleDrone {
     
     private int id;
-    private String titel;
+    private String title;
     private String paragraf;
     private String video;
     private String gif;
 
 
-    public ArticelDrone(){
+    public ArticleDrone(){
 
     }
 
-    public ArticelDrone(int id, String titel, String paragraf, String video, String gif) {
+    public ArticleDrone(int id, String title, String paragraf, String video, String gif) {
         this.id = id;
-        this.titel = titel;
+        this.title = title;
         this.video = video;
         this.paragraf = paragraf;
         this.gif = gif;
@@ -37,12 +37,12 @@ public class ArticelDrone {
         this.id = id;
     }
 
-    public String getTitel() {
-        return titel;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitel(String titel) {
-        this.titel = titel;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getVideo() {
@@ -65,7 +65,7 @@ public class ArticelDrone {
     public String toString() {
         return "ArtikelDrone{" +
                 "id=" + id +
-                ", titel='" + titel + '\'' +
+                ", titel='" + title + '\'' +
                 ", video='" + video + '\'' +
                 ", paragraf='" + paragraf + '\'' +
                 ", gif='" + gif + '\'' +

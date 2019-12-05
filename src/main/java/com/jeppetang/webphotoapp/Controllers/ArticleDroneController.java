@@ -1,9 +1,7 @@
 package com.jeppetang.webphotoapp.Controllers;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.jeppetang.webphotoapp.Models.ArticelDrone;
-import com.jeppetang.webphotoapp.Repositories.ArtikelRepository;
-import com.jeppetang.webphotoapp.Services.ArtikelService;
+import com.jeppetang.webphotoapp.Models.ArticleDrone;
+import com.jeppetang.webphotoapp.Services.ArticleService;
 import com.jeppetang.webphotoapp.Services.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,12 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Controller
 public class ArticleDroneController {
 
 
     @Autowired
-    ArtikelService artikelService;
+    ArticleService articleService;
 
     @Autowired
     S3Service s3Service;
@@ -27,31 +27,37 @@ public class ArticleDroneController {
 
     @GetMapping("/createAD")
     public String createAD(Model model) {
-        model.addAttribute("articleDrone", new ArticelDrone());
+        model.addAttribute("articleDrone", new ArticleDrone());
         return "createAD";
     }
 
     @RequestMapping(value = "createAD", method = RequestMethod.POST)
-    public String createAD(@ModelAttribute ArticelDrone articelDrone, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "gifFile") MultipartFile gifFile) {
-        articelDrone.setVideo(s3Service.uploadFile(videoFile, "videos"));
-        articelDrone.setGif(s3Service.uploadFile(gifFile, "gifs"));
-        artikelService.storeAd(articelDrone);
+    public String createAD(@ModelAttribute ArticleDrone articleDrone, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "gifFile") MultipartFile gifFile) {
+        articleDrone.setVideo(s3Service.uploadFile(videoFile, "videos"));
+        articleDrone.setGif(s3Service.uploadFile(gifFile, "gifs"));
+        articleService.storeAd(articleDrone);
         return "redirect:/";
     }
 
     @GetMapping("/deleteAD/{id}")
     public String deleteAD(@PathVariable int id, Model model){
-        ArticelDrone ad = artikelService.requestAd(id);
+        ArticleDrone ad = articleService.requestAd(id);
         model.addAttribute("articleDrone", ad);
         return "deleteAD";
     }
 
     @PostMapping("/deleteAD")
-    public String deleteAD(@ModelAttribute ArticelDrone articleDrone){
+    public String deleteAD(@ModelAttribute ArticleDrone articleDrone){
         s3Service.deleteFile(articleDrone.getVideo(), "videos");
         s3Service.deleteFile(articleDrone.getGif(), "gifs");
-        artikelService.removeAd(articleDrone.getId());
+        articleService.removeAd(articleDrone.getId());
         return "redirect:/";
     }
 
+    @GetMapping("/articleDrones")
+    public String getAllAVs(Model model){
+        List<ArticleDrone> articleDrones = articleService.getAllAd();
+        model.addAttribute("articleDrones", articleDrones);
+        return "articleDrones";
+    }
 }

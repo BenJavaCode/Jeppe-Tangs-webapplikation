@@ -1,16 +1,16 @@
 package com.jeppetang.webphotoapp.Services.Impl;
 
-import com.jeppetang.webphotoapp.Models.ArticelDrone;
+import com.jeppetang.webphotoapp.Models.ArticleDrone;
 import com.jeppetang.webphotoapp.Models.ArticleVideo;
 import com.jeppetang.webphotoapp.Repositories.ArtikelRepository;
-import com.jeppetang.webphotoapp.Services.ArtikelService;
+import com.jeppetang.webphotoapp.Services.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ArtikelServiceImpl implements ArtikelService {
+public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     ArtikelRepository artikelRepository;
@@ -22,7 +22,7 @@ public class ArtikelServiceImpl implements ArtikelService {
     }
 
     @Override
-    public List<ArticelDrone> getAllAd() {
+    public List<ArticleDrone> getAllAd() {
         return artikelRepository.allAd();
     }
 
@@ -32,7 +32,7 @@ public class ArtikelServiceImpl implements ArtikelService {
     }
 
     @Override
-    public int storeAd(ArticelDrone art) {
+    public int storeAd(ArticleDrone art) {
         return artikelRepository.saveAd(art);
     }
 
@@ -42,7 +42,7 @@ public class ArtikelServiceImpl implements ArtikelService {
     }
 
     @Override
-    public int changeAd(ArticelDrone art) {
+    public int changeAd(ArticleDrone art) {
         return artikelRepository.updateAd(art);
     }
 
@@ -62,7 +62,7 @@ public class ArtikelServiceImpl implements ArtikelService {
     }
 
     @Override
-    public ArticelDrone requestAd(int id) {
+    public ArticleDrone requestAd(int id) {
         return artikelRepository.getAd(id);
     }
 }
