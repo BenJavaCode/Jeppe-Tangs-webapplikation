@@ -16,31 +16,35 @@ public class CvRepositoryImpl implements CvRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-   // private final Logger log = (Logger) LoggerFactory.getLogger(this.getClass());
 
-
+    @Override
+    public Cv getCv(String title) {
+        return jdbcTemplate.queryForObject(
+                "select * from cv where title = ?" + title,
+                (resultSet, rowNum) ->
+                        new Cv(
+                                resultSet.getString("title"),
+                                resultSet.getString("mainText"),
+                                resultSet.getString("mailAddress"),
+                                resultSet.getInt("phoneNumber"),
+                                resultSet.getString("previousWork"),
+                                resultSet.getString("cvPicture")));
+    }
 
     @Override
     public int saveCv(Cv cv) {
-
-        //log.info("Saving Cv..");
-
         return jdbcTemplate.update(
-                "insert into cv(title, mainText, mailAddress, phoneNumber, previousWork, cvPicture) values (?,?,?,?,?,?)"
-        );
-
-
+                "insert into cv (title, mainText, mailAddress, phoneNumber, previousWork, cvPicture) VALUES (?,?,?,?,?,?)",
+                cv.getTitle(), cv.getMainText(), cv.getMainText(), cv.getPhoneNumber(), cv.getPreviousWork(), cv.getCvPicture());
     }
 
     @Override
-    public int updateCv(Cv cv){
-
-        //log.info("Updating Cv..");
-
+    public int updateCv(Cv cv) {
         return jdbcTemplate.update(
-                "update cv set  mainText = ?, mailAddress = ?, phoneNumber = ?, previousWork = ?, cvPicture = ? where title=?"
-        );
+                "update cv set title = ?, mainText = ?, mailAddress = ?, phoneNumber = ?, previousWork = ?, cvPicture = ?",
+                cv.getTitle(), cv.getMainText(), cv.getMainText(), cv.getPhoneNumber(), cv.getPreviousWork(), cv.getCvPicture());
+
     }
-
-
 }
+
+

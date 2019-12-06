@@ -13,13 +13,17 @@ public class CvServiceImpl implements CvService {
     CvRepository cvRepository;
 
     @Override
-    public void saveTheCv(Cv cv) {
+    public void saveCv(Cv cv) {
         cvRepository.saveCv(cv);
-
     }
 
     @Override
-    public void updateTheCV(Cv cv){
+    public void updateCv(Cv cv) {
         cvRepository.updateCv(cv);
+    }
+
+    @Override
+    public Cv getCv(String title) {
+        return cvRepository.getCv(title);
     }
 }
