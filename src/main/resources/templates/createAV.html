@@ -84,6 +84,39 @@
     }
 
     /* Footer ends */
+
+
+    /* Form content */
+
+    div.formcenter{
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+    }
+
+    div.holderdiv{
+
+        width: 100%;
+        display: inline-block;
+        vertical-align: middle;
+
+
+        padding-bottom: 35px;
+        padding-top: 25px;
+
+        background-color: lavender;
+
+    }
+
+    p.spacer{
+        padding-bottom: 10px;
+    }
+
+    /* Form content ends*/
+
 </style>
 <body>
 <div class="wrapper">
@@ -97,23 +130,38 @@
         </ul>
 
     </div>
-<h1>Opret ny artikel</h1>
 
-<form action = "#" th:action="@{/createAV}" th:object="${articleVideo}" enctype="multipart/form-data" method="post">
+    <div class="formcenter">
 
-    <p>Titel</p>
-    <input type = "text" th:field="*{title}">
+        <div class="holderdiv">
 
-    <p>Paragraf</p>
-    <input type = "text" th:field="*{paragraf}">
+            <h1>Opret ny artikel</h1>
 
-    <p>Video</p>
-    <input type="file" name="videoFile">
+            <form action = "#" th:action="@{/createAV}" th:object="${articleVideo}" enctype="multipart/form-data" method="post">
 
-    <p>Picture</p>
-    <input type="file" name="pictureFile">
-</form>
-    <input type="submit" value="submit">
+                <p>Titel</p>
+                <input type = "text" th:field="*{title}">
+
+                <p>Paragraf</p>
+                <textarea type = "text" th:field="*{paragraf}" rows="4" cols="50"/>
+
+                <p>Video</p>
+                <input type="file" name="videoFile">
+
+                <p>Billede</p>
+                <input type="file" name="gifFile">
+
+                <p class="spacer"></p>
+                <input type="submit" value="Lav artikel">
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
     <div class="footer">
 
         <div style="padding-left: 15px">
