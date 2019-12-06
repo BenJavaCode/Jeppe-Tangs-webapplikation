@@ -110,8 +110,8 @@
         height: 400px;
         width: 100%;
         background-color: lavender;
-        padding-top: 25px;
-        padding-bottom: 25px;
+        padding-top: 35px;
+        padding-bottom: 50px;
 
         display: flex;
         flex-direction: row;
@@ -120,6 +120,8 @@
     div.box{
         width: 50%;
         height: 100%;
+        padding-bottom: 10px;
+        padding-top: 10px;
 
         background-color: white;
 
@@ -132,6 +134,13 @@
 
     .colorshceme{
         background-color: lavender;
+        padding-bottom: 5px;
+        font-weight: bold;
+    }
+
+    p.line{
+        line-height: 5px;
+        font-weight: bold;
     }
 
     /* Form contetn ends*/
@@ -176,19 +185,19 @@
 
 
             <div class="formK">
-                <h2> Kontakt mig </h2>
+                <h1> Kontakt mig </h1>
                 <form th:action="@{/saveMail}" th:object="${create}" method="post" >
                     <p><input type="hidden" value="*{id}" th:field="*{id}"></p>
-                    <p> Navn:</p>
+                    <p class="line"> Navn:</p>
                     <input class="colorshceme" type="text" value="*{sender}" th:field="*{sender}" placeholder="Navn eller firmanavn..">
-                    <p> Din besked:</p>
+                    <p class="line"> Din besked:</p>
                     <textarea  class="colorshceme" type="text" value="*{content}" th:field="*{content}" rows="4" cols="50" placeholder="Din besked"></textarea>
-                    <p> <input type="hidden" value="*{date}" th:field="*{date}"></p>
-                    <p> Evt tlf:</p>
-                    <input  class="colorshceme" type="number" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Evt tlf..">
-                    <p> mail:</p>
+                    <p class="line"> <input type="hidden" value="*{date}" th:field="*{date}"></p>
+                    <p class="line"> Evt tlf:</p>
+                    <input  class="colorshceme" type="tel" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Evt tlf..">
+                    <p class="line"> mail:</p>
                     <input  class="colorshceme" type="text" value="*{mail}" th:field="*{mail}" placeholder="Din mail..">
-                    <input class="colorshceme" type="submit" value="send">
+                    <input class="colorshceme" type="submit" value="Send">
 
                 </form>
             </div>
