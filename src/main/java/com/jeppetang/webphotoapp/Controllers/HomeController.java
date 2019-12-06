@@ -10,18 +10,4 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @Autowired
-    ArticleService articleService;
-
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("articleVideo", articleService.getAllAv());
-        return "home";
-    }
-
-    @GetMapping("/Drone-fotograf")
-    public String drone(Model model){
-        model.addAttribute("articleDrone", articleService.getAllAd());
-        return "dronefotograf";
-    }
 }

@@ -4,7 +4,8 @@ import com.jeppetang.webphotoapp.Models.Cv;
 
 public interface CvService {
 
-    void saveTheCv(Cv cv);
-    void updateTheCV(Cv cv);
 
+    void saveCv(Cv cv);
+    void updateCv(Cv cv);
+    Cv getCv(String title);
 }
