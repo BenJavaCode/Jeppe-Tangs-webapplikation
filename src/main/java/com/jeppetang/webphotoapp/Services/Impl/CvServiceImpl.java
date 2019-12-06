@@ -4,26 +4,28 @@ import com.jeppetang.webphotoapp.Models.Cv;
 import com.jeppetang.webphotoapp.Repositories.CvRepository;
 import com.jeppetang.webphotoapp.Services.CvService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
+
 public class CvServiceImpl implements CvService {
 
     @Autowired
     CvRepository cvRepository;
 
     @Override
-    public void saveCv(Cv cv) {
-        cvRepository.saveCv(cv);
+    public List<Cv> getAllCv() {
+        return cvRepository.getAllCvs();
     }
 
     @Override
-    public void updateCv(Cv cv) {
-        cvRepository.updateCv(cv);
+    public void addToCv(Cv cv) {
+        cvRepository.addToCv(cv);
+
     }
 
     @Override
-    public Cv getCv(String title) {
-        return cvRepository.getCv(title);
+    public void deleteFromCv(int id) {
+        cvRepository.removeFromCv(id);
+
     }
 }

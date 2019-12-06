@@ -2,11 +2,14 @@ package com.jeppetang.webphotoapp.Repositories;
 
 import com.jeppetang.webphotoapp.Models.Cv;
 
+import javax.validation.constraints.Max;
 import java.util.List;
 
 public interface CvRepository {
 
-    public Cv getCv(String title);
-    public int saveCv(Cv cv);
-    public int updateCv(Cv cv);
+
+    List<Cv> getAllCvs();
+    int addToCv(Cv cv);
+    int removeFromCv(int id);
+
 }

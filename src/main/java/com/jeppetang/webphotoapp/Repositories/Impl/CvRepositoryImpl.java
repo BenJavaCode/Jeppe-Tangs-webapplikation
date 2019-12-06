@@ -2,49 +2,40 @@ package com.jeppetang.webphotoapp.Repositories.Impl;
 
 import com.jeppetang.webphotoapp.Models.Cv;
 import com.jeppetang.webphotoapp.Repositories.CvRepository;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
 
-import java.util.logging.Logger;
+import java.util.List;
 
-
-@Repository
 public class CvRepositoryImpl implements CvRepository {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-
     @Override
-    public Cv getCv(String title) {
-        return jdbcTemplate.queryForObject(
-                "select * from cv where title = ?" + title,
+    public List<Cv> getAllCvs() {
+        return jdbcTemplate.query(
+
+                "select * from cv",
                 (resultSet, rowNum) ->
                         new Cv(
+                                resultSet.getInt("id"),
+                                resultSet.getInt("year"),
                                 resultSet.getString("title"),
-                                resultSet.getString("mainText"),
-                                resultSet.getString("mailAddress"),
-                                resultSet.getInt("phoneNumber"),
-                                resultSet.getString("previousWork"),
-                                resultSet.getString("cvPicture")));
+                                resultSet.getString("role")
+                        ));
     }
 
     @Override
-    public int saveCv(Cv cv) {
+    public int addToCv(Cv cv) {
         return jdbcTemplate.update(
-                "insert into cv (title, mainText, mailAddress, phoneNumber, previousWork, cvPicture) VALUES (?,?,?,?,?,?)",
-                cv.getTitle(), cv.getMainText(), cv.getMainText(), cv.getPhoneNumber(), cv.getPreviousWork(), cv.getCvPicture());
+                "insert into cv(year, title, role) VALUE (?,?,?)",
+                cv.getYear(), cv.getTitle(), cv.getRole());
     }
 
     @Override
-    public int updateCv(Cv cv) {
+    public int removeFromCv(int id) {
         return jdbcTemplate.update(
-                "update cv set title = ?, mainText = ?, mailAddress = ?, phoneNumber = ?, previousWork = ?, cvPicture = ?",
-                cv.getTitle(), cv.getMainText(), cv.getMainText(), cv.getPhoneNumber(), cv.getPreviousWork(), cv.getCvPicture());
-
+                "delete from cv where id = ?", id);
     }
 }
-
-
