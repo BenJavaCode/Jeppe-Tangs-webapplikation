@@ -4,9 +4,11 @@ import com.jeppetang.webphotoapp.Models.Cv;
 import com.jeppetang.webphotoapp.Repositories.CvRepository;
 import com.jeppetang.webphotoapp.Services.CvService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CvServiceImpl implements CvService {
 
     @Autowired

@@ -4,9 +4,11 @@ import com.jeppetang.webphotoapp.Models.Cv;
 import com.jeppetang.webphotoapp.Repositories.CvRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class CvRepositoryImpl implements CvRepository {
 
     @Autowired

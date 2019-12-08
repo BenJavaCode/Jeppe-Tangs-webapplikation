@@ -16,9 +16,12 @@
         vertical-align: middle;
     }
 
+
+
     /* Position the image container (needed to position the left and right arrows) */
     .container {
         position: relative;
+        padding-top: 50px;
 
     }
 
@@ -27,6 +30,7 @@
         display: none;
 
     }
+
 
     /* Add a pointer when hovering over the thumbnail images */
     .cursor {
@@ -59,7 +63,7 @@
     /* On hover, add a black background color with a little bit see-through */
     .prev:hover,
     .next:hover {
-        background-color: rgba(0, 0, 0, 0.8);
+        background-color: white(0, 0, 0, 0.8);
     }
 
     /* Number text (1/3 etc) */
@@ -183,20 +187,46 @@
 
     div.cv{
 
-        display: flex;
-        flex-direction: row;
-        overflow: hidden;
-        padding-bottom: 80px;
-        padding-top: 80px;
-        padding-left: 15px;
-        background-color: snow;
+
+        padding-bottom: 120px;
+        padding-top: 60px;
+
+
     }
 
     div.cvContent{
         width: 50%;
-        padding-top: 75px;
+        padding-top: 50px;
         overflow: hidden;
+        background-color: snow;
 
+    }
+
+    div.colorwrap{
+        padding-top: 18px;
+        padding-bottom: 18px;
+        background-color: lavender;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    table.cvTable {
+        border-collapse: collapse;
+        width: 60%;
+        text-align: left;
+
+    }
+
+    td.cvTd{
+        line-height: 25px;
+    }
+
+    .sh{
+        padding-top: 30px;
     }
 
     /*Cv ends */
@@ -279,6 +309,8 @@
 
     <div class="cv">
 
+        <div class="colorwrap">
+
         <div class="cvContent">
 
             <img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/jeppebob.png" width="90%" height="90%">
@@ -287,7 +319,7 @@
 
         <div class="cvContent">
 
-            <h2> Jeppe Tang</h2>
+            <h2 class="sh"> Jeppe Tang</h2>
 
             <h3>JANUAR 2014 - JUNI 2014</h3>
 
@@ -300,8 +332,29 @@
                 men min tid har overvejende været præget af at arbejde med kameraudstyr.
                 Heriblandt utallige små og længerevarende jobs som B-fotograf eller dronefører som ikke er blevet offentliggjort,
                 da filmskolen kun tillader afgangsfilmene offentliggjort.</p>
+
+
+            <div>
+                <table class="cvTable">
+                    <th>Udgivelsesår</th>
+                    <th>Titel</th>
+                    <th>Rolle</th>
+
+                    <tr th:each =  "a : ${cv}">
+
+                        <td class="cvTd" th:text="${a.year}"></td>
+                        <td class="cvTd" th:text="${a.title}"></td>
+                        <td class="cvTd" th:text="${a.role}"></td>
+
+                    </tr>
+
+                </table>
+
+            </div>
         </div>
 
+
+        </div>
 
     </div>
 
