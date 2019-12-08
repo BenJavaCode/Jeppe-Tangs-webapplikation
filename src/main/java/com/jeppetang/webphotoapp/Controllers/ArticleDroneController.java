@@ -54,10 +54,10 @@ public class ArticleDroneController {
         return "redirect:/";
     }
 
-    @GetMapping("/articleDrones")
+    @GetMapping("/drone-galleri")
     public String getAllAVs(Model model){
         List<ArticleDrone> articleDrones = articleService.getAllAd();
         model.addAttribute("articleDrones", articleDrones);
-        return "articleDrones";
+        return "drone-galleri";
     }
 }
