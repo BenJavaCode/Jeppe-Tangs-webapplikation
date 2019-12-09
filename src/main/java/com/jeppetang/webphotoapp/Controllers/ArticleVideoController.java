@@ -59,5 +59,16 @@ public class ArticleVideoController {
         return "articleVideos";
     }
 
+    @GetMapping("/editAV/{id}")
+    public String editAV(@PathVariable int id, Model model) {
+        ArticleVideo av = articleService.requestAv(id);
+        model.addAttribute("aritcleVideo", av);
+        return "/editAV";
+    }
 
+    @PostMapping("/editAV")
+    public String editAV(@ModelAttribute ArticleVideo articleVideo) {
+        articleService.changeAv(articleVideo);
+        return "/editAV";
+    }
 }

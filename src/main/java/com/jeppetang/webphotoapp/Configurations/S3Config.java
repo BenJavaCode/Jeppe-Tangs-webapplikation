@@ -9,9 +9,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/*
+ * Skrevet af ISL
+ * I vores s3 confirguration opretter vi en s3client som vi bruger til at oprette kontakt til vores s3.
+ * Vi har hentet aws-sdk dependency som indholder AmazonS3 interfacet hvilket vi bruger til at oprette en bean
+ * vi kan autowired i vores s3Service.
+ */
+
 @Configuration
 public class S3Config {
 
+    /*
+     * Binder vores s3 properties i application.properties til de Strings vi bruger i s3client.
+     */
     @Value("${jsa.aws.access_key_id}")
     private String awsId;
 
