@@ -23,6 +23,7 @@
         border-style: solid;
         border-width: 1px;
         padding: 5px 5px 5px 5px;
+        margin-bottom: 15px;
     }
     ul {
         list-style-type: none;
@@ -45,11 +46,13 @@
     }
 
     li a:hover {
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
 
     a:active {
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
     /* navbar end */
 
@@ -84,7 +87,8 @@
     }
 
     a.foot:hover{
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
 
     /* Footer ends */
@@ -95,6 +99,9 @@
         height: 400px;
         width: 100%;
         padding-bottom: 50px;
+        background-image: url('https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/drone-4302860_1280.jpg');
+        background-size: cover;
+        margin-bottom: 60px;
     }
 
     /*  Hero section ends */
@@ -109,7 +116,7 @@
     div.colordiv{
         height: 400px;
         width: 100%;
-        background-color: lavender;
+        background-color: darkslategray;
         padding-top: 35px;
         padding-bottom: 50px;
 
@@ -132,10 +139,15 @@
         margin-left: 20px;
     }
 
+    ::placeholder {
+        color: white;
+    }
+
     .colorshceme{
-        background-color: lavender;
+        background-color: darkslategray;
         padding-bottom: 5px;
         font-weight: bold;
+        color: white;
     }
 
     p.line{
@@ -163,9 +175,8 @@
     </div>
     
     
-    <div class="hero">
-        
-        <img src="https://photowebappphotostorrage.s3.eu-central-1.amazonaws.com/static/drone-4302860_1280.jpg" width="100%" height="100%">
+    <div class="hero" >
+
     </div>
 
 
@@ -197,7 +208,7 @@
                     <input  class="colorshceme" type="tel" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Evt tlf..">
                     <p class="line"> mail:</p>
                     <input  class="colorshceme" type="text" value="*{mail}" th:field="*{mail}" placeholder="Din mail..">
-                    <input class="colorshceme" type="submit" value="Send">
+                    <input style="padding-top: 2px" class="colorshceme" type="submit" value="Send">
 
                 </form>
             </div>
