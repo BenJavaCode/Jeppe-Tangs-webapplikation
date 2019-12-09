@@ -43,11 +43,13 @@
     }
 
     li a:hover {
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
 
     a:active {
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
     /* navbar end */
 
@@ -80,7 +82,8 @@
     }
 
     a.foot:hover{
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
 
     /* Footer ends */
@@ -108,14 +111,22 @@
 
 
 
-    #kunder tr:hover {background-color: lavender;}
+    #kunder tr:hover {
+        background-color: darkslategray;
+        color: white;
+    }
+
+    a.tr{
+        text-decoration: none;
+        color: white;
+    }
 
     #kunder th {
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
-        background-color: lavender;
-        color: black;
+        background-color: darkslategray;
+        color: white;
         font-size: 16px;
     }
 
@@ -171,7 +182,7 @@
                 <td th:text="${a.sender}"></td>
                 <td th:text="${a.phoneNumber}"></td>
                 <td th:text="${a.content}"></td>
-                <td><a th:href="${'/delete/' + a.id}">DELETE</a></td>
+                <td style="background-color: darkslategray"><a class="tr" th:href="${'/delete/' + a.id}">DELETE</a></td>
             </tr>
 
         </table>

@@ -23,6 +23,7 @@
         border-style: solid;
         border-width: 1px;
         padding: 5px 5px 5px 5px;
+        margin-bottom: 25px;
     }
     ul {
         list-style-type: none;
@@ -45,11 +46,13 @@
     }
 
     li a:hover {
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
 
     a:active {
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
     /* navbar end */
 
@@ -82,7 +85,8 @@
     }
 
     a.foot:hover{
-        background-color: lavender;
+        background-color: darkslategray;
+        color: white;
     }
 
     /* Footer ends */
@@ -90,22 +94,100 @@
 
     /* Drone-content*/
 
+    div.galleriRow{
+
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        background-color: darkslategray;
+        padding-top: 15px;
+        padding-bottom: 20px;
+
+    }
+
+    div.contentwrap{
+        width: 100%;
+        padding-bottom: 100px;
+        padding-top: 20px;
+
+    }
+
     div.galleriCol{
         display: flex;
         flex-direction: column;
+        padding-top: 10px;
+        max-width: 49%;
+        max-height: 120%;
+
     }
 
-    div.galleriRow{
-        display: flex;
-        flex-direction: row;
+    div.galleriTekst{
+        width: 49%;
+        height: 100%;
+        color: white;
+
+        padding-top: 35px;
+
     }
 
-    div.galleriCont{
-    width: 50%;
+    div.pad{
+        padding-right: 20px;
+        padding-left: 20px;
     }
+
+
+
+    img.padding{
+
+        padding-bottom: 2px;
+    }
+
+    a.nostyle{
+        text-decoration: underline;
+        color: #f2f2f2;
+    }
+
+
+    /* Lightbox part */
+
+    .lightbox {
+        /** Default lightbox to hidden */
+        display: none;
+
+        position: fixed;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.8);
+
+        /* Link style*/
+        text-decoration: none;
+        color: white;
+    }
+
+    .lightbox video {
+
+        max-width: 70%;
+        max-height: 70%;
+    }
+    .lightbox h2{
+        margin-top: 3%;
+    }
+
+    /** Unhide lightbox **/
+    .lightbox:target {
+
+        display: block;
+    }
+
+
 
     /* Drone-content ends*/
-
 
 </style>
 
@@ -130,34 +212,50 @@
 
 
 
-    <div class="galleriCol">
+    <div class="contentwrap">
 
         <div class="galleriRow">
 
-            <table>
+            <div class="galleriTekst">
 
+                <div class="pad">
 
-                <div class="galleriCont">
+                    <h2>Velkommen til mit Drone-galleri</h2>
 
-
-
+                    <p>I dette galleri kan du se nogle af de droneoptagelser som jeg har lavet i årenes løb.
+                        Mange af optagelserne er dele af filmproduktioner og andre er optagelser af naturområder som er blevet brugt til reklamer m.m</p>
+                    <p>Hvis du har spørgsmål til hvilke slags opgaver jeg påtager mig så kontakt mig endelig <a class="nostyle" href="/kontakt"> her</a></p>
 
                 </div>
 
+            </div>
 
-            </table>
+
+                <tr th:each=" a : ${articleDrones}" >
+
+                    <div class="galleriCol">
+
+                        <a th:href= "'#' + ${a.id}">
+                            <td><img class="padding" th:src="${a.gif}"  style="max-width: 100%"> </td>
+                        </a>
+
+                        <a href="#_" class="lightbox" th:id="${a.id}">
+                            <div>
+                                <h2 th:text="${a.title}"></h2>
+                                <video controls autoplay muted th:src="${a.video}" width="100%" height="100%"></video>
+                                <p th:text="${a.paragraf}"></p>
+                            </div>
+                        </a>
 
 
+                    </div>
+
+
+                </tr>
 
         </div>
 
-
-
     </div>
-
-
-
-
 
     <div class="footer">
 
@@ -173,10 +271,9 @@
     </div>
 
 
+    </div>
 
 
-
-</div>
 
 
 

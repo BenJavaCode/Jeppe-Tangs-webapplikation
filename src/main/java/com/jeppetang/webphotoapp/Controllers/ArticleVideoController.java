@@ -52,11 +52,11 @@ public class ArticleVideoController {
         return "redirect:/";
     }
 
-    @GetMapping("/articleVideos")
+    @GetMapping("/video-galleri")
     public String getAllAVs(Model model){
         List<ArticleVideo> articleVideos = articleService.getAllAv();
         model.addAttribute("aricleVideos",articleVideos);
-        return "articleVideos";
+        return "video-galleri";
     }
 
 
