@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -131,9 +131,18 @@
 <div class="nav">
 
     <ul>
-        <li><a href="/admin">Admin home</a></li>
-        <li> <a href="/beskeder">Beskeder <td th:text="${status}"> </td></a></li>
-        <li style="float:right"><a href="#about">Logout</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/drone-galleri">Drone-galleri</a></li>
+        <li><a href="/video-galleri">Video-galleri</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+
+        <li style="float:right"><a href="/login">Login</a></li>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+
+            <li style="float:right"><a href="/logout">Logout</a></li>
+            <li style="float: right"><a href="/admin">Admin-Home</a></li>
+            <li style ="float: right"> <a href="/beskeder">Beskeder <td th:text="${status}"> </td></a></li>
+        </div>
     </ul>
 
 </div>
