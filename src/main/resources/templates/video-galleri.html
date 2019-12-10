@@ -163,18 +163,27 @@
         top: 0;
         left: 0;
         background: rgba(0,0,0,0.8);
+
+        /* Link style*/
+        text-decoration: none;
+        color: white;
     }
 
     .lightbox video {
 
         max-width: 70%;
         max-height: 70%;
-        margin-top: 8%;
+
+    }
+
+    .lightbox h2{
+        margin-top: 3%;
     }
 
     /** Unhide lightbox **/
     .lightbox:target {
 
+        outline: black;
         display: block;
     }
 
@@ -224,7 +233,7 @@
             </div>
 
 
-            <tr th:each=" a : ${aricleVideos}" >
+            <tr th:each=" a : ${articleVideos}" >
 
                 <div class="galleriCol">
 
@@ -233,7 +242,9 @@
                     </a>
 
                     <a href="#_" class="lightbox" th:id="${a.id}">
-                        <video controls autoplay muted th:src="${a.video}" width="100%" height="100%"></video>
+                        <h2 th:text="${a.title}"></h2>
+                        <video controls muted th:src="${a.video}" width="100%" height="100%"></video>
+                        <p th:text="${a.paragraf}"></p>
                     </a>
 
                 </div>
