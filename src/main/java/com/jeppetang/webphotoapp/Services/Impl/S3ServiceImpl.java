@@ -28,6 +28,13 @@ public class S3ServiceImpl implements S3Service {
     String bucketName;
 
     //Benytter nedafstående metoder til at uploade til s3 og returne en object url der referer til filen der ligger i s3.
+
+    /**
+     *
+      * @param multipartFile -
+     * @param folderName -
+     * @return -
+     */
     @Override
     public String uploadFile(MultipartFile multipartFile, String folderName) {
         String fileUrl = "";
