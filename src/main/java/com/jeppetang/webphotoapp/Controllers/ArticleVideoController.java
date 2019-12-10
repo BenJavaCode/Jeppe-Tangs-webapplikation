@@ -1,5 +1,6 @@
 package com.jeppetang.webphotoapp.Controllers;
 
+import com.jeppetang.webphotoapp.Models.ArticleDrone;
 import com.jeppetang.webphotoapp.Models.ArticleVideo;
 import com.jeppetang.webphotoapp.Services.ArticleService;
 import com.jeppetang.webphotoapp.Services.S3Service;
@@ -49,26 +50,38 @@ public class ArticleVideoController {
         s3Service.deleteFile(articleVideo.getVideo(), "videos");
         s3Service.deleteFile(articleVideo.getPicture(), "pictures");
         articleService.removeAv(articleVideo.getId());
-        return "redirect:/";
+        return "redirect:/av-admin";
     }
 
     @GetMapping("/video-galleri")
     public String getAllAVs(Model model){
         List<ArticleVideo> articleVideos = articleService.getAllAv();
-        model.addAttribute("aricleVideos",articleVideos);
+        model.addAttribute("articleVideos",articleVideos);
         return "video-galleri";
     }
 
-    @GetMapping("/editAV/{id}")
-    public String editAV(@PathVariable int id, Model model) {
-        ArticleVideo av = articleService.requestAv(id);
-        model.addAttribute("aritcleVideo", av);
-        return "/editAV";
+    @GetMapping("/av-admin")
+    public String AdAdmin( Model model) {
+
+        List<ArticleVideo> articleVideos = articleService.getAllAv();
+
+        model.addAttribute("articleVideos", articleVideos);
+
+        return "/AvAdmin";
     }
 
-    @PostMapping("/editAV")
-    public String editAV(@ModelAttribute ArticleVideo articleVideo) {
+    @GetMapping("/editAV/{id}")
+    public String editAD(@PathVariable int id, Model model){
+
+        model.addAttribute("articleVideos", articleService.requestAv(id));
+
+        return "editAV";
+    }
+
+
+    @PostMapping("/updateAV/")
+    public String editAD(@ModelAttribute ArticleVideo articleVideo) {
         articleService.changeAv(articleVideo);
-        return "/editAV";
+        return "redirect:/av-admin";
     }
 }

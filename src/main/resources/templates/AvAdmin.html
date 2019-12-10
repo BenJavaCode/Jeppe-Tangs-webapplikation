@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -46,12 +46,12 @@
     }
 
     li a:hover {
-        background-color: darkslategray;
+        background-color: lavender;
         color: white;
     }
 
     a:active {
-        background-color: darkslategray;
+        background-color: lavender;
         color: white;
     }
     /* navbar end */
@@ -85,7 +85,7 @@
     }
 
     a.foot:hover{
-        background-color: darkslategray;
+        background-color: lavender;
         color: white;
     }
 
@@ -147,8 +147,8 @@
     a.nostyle{
         text-decoration: underline;
         color: #f2f2f2;
+        line-height: 20px;
     }
-
 
     /* Lightbox part */
 
@@ -174,7 +174,9 @@
 
         max-width: 70%;
         max-height: 70%;
+
     }
+
     .lightbox h2{
         margin-top: 3%;
     }
@@ -182,10 +184,9 @@
     /** Unhide lightbox **/
     .lightbox:target {
 
-        outline: none;
+        outline: black;
         display: block;
     }
-
 
 
     /* Drone-content ends*/
@@ -202,18 +203,9 @@
     <div class="nav">
 
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/drone-galleri">Drone-galleri</a></li>
-            <li><a href="/video-galleri">Video-galleri</a></li>
-            <li><a href="/kontakt">Kontakt</a></li>
-
-            <li style="float:right"><a href="/login">Login</a></li>
-            <div sec:authorize="hasRole('ROLE_ADMIN')">
-
-                <li style="float:right"><a href="/logout">Logout</a></li>
-                <li style="float: right"><a href="/admin">Admin-Home</a></li>
-                <li style ="float: right"> <a href="/beskeder">Beskeder <td th:text="${status}"> </td></a></li>
-            </div>
+            <li><a href="/admin">Admin home</a></li>
+            <li> <a href="/beskeder">Beskeder <td th:text="${status}"> </td></a></li>
+            <li style="float:right"><a href="#about">Logout</a></li>
         </ul>
 
     </div>
@@ -229,39 +221,40 @@
             <div class="galleriTekst">
 
                 <div class="pad">
-
                     <h2>Velkommen til mit Drone-galleri</h2>
 
                     <p>I dette galleri kan du se nogle af de droneoptagelser som jeg har lavet i årenes løb.
                         Mange af optagelserne er dele af filmproduktioner og andre er optagelser af naturområder som er blevet brugt til reklamer m.m</p>
                     <p>Hvis du har spørgsmål til hvilke slags opgaver jeg påtager mig så kontakt mig endelig <a class="nostyle" href="/kontakt"> her</a></p>
 
+
                 </div>
+
 
             </div>
 
 
-                <tr th:each=" a : ${articleDrones}" >
+            <tr th:each=" a : ${articleVideos}" >
 
-                    <div class="galleriCol">
+                <div class="galleriCol">
 
-                        <a th:href= "'#' + ${a.id}">
-                            <td><img class="padding" th:src="${a.gif}"  style="max-width: 100%"> </td>
-                        </a>
+                    <a th:href= "'#' + ${a.id}">
+                        <td><img class="padding" th:src="${a.picture}"  style="max-width: 100%"> </td>
+                    </a>
 
-                        <a href="#_" class="lightbox" th:id="${a.id}">
-                            <div>
-                                <h2 th:text="${a.title}"></h2>
-                                <video controls muted th:src="${a.video}" width="100%" height="100%"></video>
-                                <p th:text="${a.paragraf}"></p>
-                            </div>
-                        </a>
+                    <a class="nostyle" th:href="${'/editAV/' + a.id}">Rediger</a>
+                    <a class="nostyle" th:href="${'/deleteAV/' + a.id}">Delete</a>
+
+                    <a href="#_" class="lightbox" th:id="${a.id}">
+                        <h2 th:text="${a.title}"></h2>
+                        <video controls muted th:src="${a.video}" width="100%" height="100%"></video>
+                        <p th:text="${a.paragraf}"></p>
+                    </a>
+
+                </div>
 
 
-                    </div>
-
-
-                </tr>
+            </tr>
 
         </div>
 
@@ -281,7 +274,7 @@
     </div>
 
 
-    </div>
+</div>
 
 
 

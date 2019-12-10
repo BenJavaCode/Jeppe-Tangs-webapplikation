@@ -55,7 +55,7 @@ public class ArticleDroneController {
         s3Service.deleteFile(articleDrone.getVideo(), "videos");
         s3Service.deleteFile(articleDrone.getGif(), "gifs");
         articleService.removeAd(articleDrone.getId());
-        return "redirect:/";
+        return "redirect:/ad-admin";
     }
 
     @GetMapping("/drone-galleri")
@@ -65,16 +65,26 @@ public class ArticleDroneController {
         return "drone-galleri";
     }
 
-    @GetMapping("/editAD/{id}")
-    public String editAD(@PathVariable int id, Model model) {
-        ArticleDrone ad = articleService.requestAd(id);
-        model.addAttribute("aritcleDrone", ad);
-        return "/editAD";
+    @GetMapping("/ad-admin")
+    public String AdAdmin( Model model) {
+        List<ArticleDrone> articleDrones = articleService.getAllAd();
+        model.addAttribute("articleDrones", articleDrones);
+
+        return "/AdAdmin";
     }
 
-    @PostMapping("/editAD")
+    @GetMapping("/editAD/{id}")
+    public String editAD(@PathVariable int id, Model model){
+
+        model.addAttribute("aritcleDrone", articleService.requestAd(id));
+
+        return "editAD";
+    }
+
+
+    @PostMapping("/updateAD/")
     public String editAD(@ModelAttribute ArticleDrone articleDrone) {
         articleService.changeAd(articleDrone);
-        return "/editAD";
+        return "redirect:/ad-admin";
     }
 }
