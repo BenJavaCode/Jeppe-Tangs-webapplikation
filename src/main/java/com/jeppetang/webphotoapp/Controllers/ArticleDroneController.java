@@ -35,7 +35,7 @@ public class ArticleDroneController {
         return "createAD";
     }
 
-    @RequestMapping(value = "createAD", method = RequestMethod.POST)
+    @PostMapping("/createAD")
     public String createAD(@ModelAttribute ArticleDrone articleDrone, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "gifFile") MultipartFile gifFile) {
         articleDrone.setVideo(s3Service.uploadFile(videoFile, "videos"));
         articleDrone.setGif(s3Service.uploadFile(gifFile, "gifs"));

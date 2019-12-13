@@ -6,6 +6,7 @@ import com.jeppetang.webphotoapp.Services.ArticleService;
 import com.jeppetang.webphotoapp.Services.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class ArticleVideoController {
         model.addAttribute("articleVideo", new ArticleVideo());
         return "createAV";
     }
-    @RequestMapping(value = "createAV", method = RequestMethod.POST)
+    @PostMapping("/createAV ")
     public String createAV(@ModelAttribute ArticleVideo articleVideo, @RequestPart(value = "videoFile") MultipartFile videoFile, @RequestPart(value = "pictureFile") MultipartFile pictureFile) {
         articleVideo.setVideo(s3Service.uploadFile(videoFile, "videos"));
         articleVideo.setPicture(s3Service.uploadFile(pictureFile, "pictures"));

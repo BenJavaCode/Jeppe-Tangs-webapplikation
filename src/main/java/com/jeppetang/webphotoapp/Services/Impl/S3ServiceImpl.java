@@ -27,13 +27,13 @@ public class S3ServiceImpl implements S3Service {
     @Value("${jsa.s3.bucket}")
     String bucketName;
 
-    //Benytter nedafstående metoder til at uploade til s3 og returne en object url der referer til filen der ligger i s3.
+
 
     /**
-     *
-      * @param multipartFile -
-     * @param folderName -
-     * @return -
+     * Benytter nedafstående metoder til at uploade til s3 og returne en object url der referer til filen der ligger i s3.
+     * @param multipartFile Tager imod en fil af type mulitipartfile
+     * @param folderName Bestemmer hvilken mappe filen haver i
+     * @return Filens object url i s3
      */
     @Override
     public String uploadFile(MultipartFile multipartFile, String folderName) {
