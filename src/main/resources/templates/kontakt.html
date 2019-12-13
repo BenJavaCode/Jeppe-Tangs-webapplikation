@@ -116,7 +116,7 @@
     div.colordiv{
         height: 400px;
         width: 100%;
-        background-color: darkslategray;
+        background-color: darkgray;
         padding-top: 35px;
         padding-bottom: 50px;
 
@@ -144,7 +144,7 @@
     }
 
     .colorshceme{
-        background-color: darkslategray;
+        background-color: darkgray;
         padding-bottom: 5px;
         font-weight: bold;
         color: white;
@@ -208,14 +208,14 @@
                 <form th:action="@{/saveMail}" th:object="${create}" method="post" >
                     <p><input type="hidden" value="*{id}" th:field="*{id}"></p>
                     <p class="line"> Navn:</p>
-                    <input class="colorshceme" type="text" value="*{sender}" th:field="*{sender}" placeholder="Navn eller firmanavn..">
+                    <input class="colorshceme" type="text" value="*{sender}" th:field="*{sender}" placeholder="Navn eller firmanavn.." maxlength="30">
                     <p class="line"> Din besked:</p>
                     <textarea  class="colorshceme" type="text" value="*{content}" th:field="*{content}" rows="4" cols="50" placeholder="Din besked"></textarea>
                     <p class="line"> <input type="hidden" value="*{date}" th:field="*{date}"></p>
                     <p class="line"> Evt tlf:</p>
-                    <input  class="colorshceme" type="tel" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Evt tlf..">
+                    <input  class="colorshceme" type="number" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Evt tlf..">
                     <p class="line"> mail:</p>
-                    <input  class="colorshceme" type="text" value="*{mail}" th:field="*{mail}" placeholder="Din mail..">
+                    <input  class="colorshceme" type="email" value="*{mail}" th:field="*{mail}" placeholder="Din mail..">
                     <input style="padding-top: 2px" class="colorshceme" type="submit" value="Send">
 
                 </form>

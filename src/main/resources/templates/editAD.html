@@ -11,7 +11,7 @@
     <form  th:action="@{/updateAD/}" th:object="${aritcleDrone}" method="post">
         <input type="hidden" th:value="*{id}" th:field="*{id}">
         <p>Titel</p>
-        <input type="text" th:value="*{title}" th:field="*{title}">
+        <input type="text" th:value="*{title}" th:field="*{title}" maxlength="35">
         <p>Paragraf</p>
         <textarea type="text" th:value="*{paragraf}" th:field="*{paragraf}" cols="50" rows="4"> </textarea>
         <input type="hidden" th:value="*{video}" th:field="*{video}">

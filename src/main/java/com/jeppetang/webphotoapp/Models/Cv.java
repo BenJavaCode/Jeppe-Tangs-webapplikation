@@ -40,4 +40,22 @@ public class Cv {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Cv{" +
+                "id=" + id +
+                ", year=" + year +
+                ", title='" + title + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

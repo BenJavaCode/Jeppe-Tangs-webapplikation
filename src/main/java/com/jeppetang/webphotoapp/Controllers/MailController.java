@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -24,6 +25,7 @@ public class MailController {
     public String mails(Model model){
         List<Mail> mails = mailService.fetchAllMails();
         model.addAttribute("mails", mails);
+        model.addAttribute("status", mailService.countUnAnswered());
         return "beskeder";
     }
 
@@ -45,6 +47,8 @@ public class MailController {
     @RequestMapping(value = "/view/{id}")
     public String answer(Model model, @PathVariable int id){
 
+        model.addAttribute("status", mailService.countUnAnswered());
+
         Mail mailkunde = mailService.findById(id);
         List<Mail> liste = mailService.fetchByMail(mailkunde.getMail());
         mailService.answered(mailkunde);
@@ -57,12 +61,13 @@ public class MailController {
     }
 
     @RequestMapping(value = "/SendAnswer", method = RequestMethod.POST)
-    public String sendAnswer(@ModelAttribute Mail mail){
+    public String sendAnswer(@ModelAttribute Mail mail, HttpServletRequest request){
 
         mailService.sendEmail(mail.getMail(), mail.getSender(), mail.getContent());
         mailService.saveMail(mail);
 
-        return "redirect:/admin";
+        String referer = request.getHeader("Referer");
+        return "redirect:"+referer;
     }
 
     @GetMapping("/admin")
@@ -74,10 +79,11 @@ public class MailController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable int id){
+    public String delete(@PathVariable int id, HttpServletRequest request){
 
         mailService.delete(id);
 
-        return "redirect:/beskeder";
+        String referer = request.getHeader("Referer");
+        return "redirect:" +referer;
     }
 }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+
+    <form th:action="@{/saveCv}" th:object="${cv}" method="post">
+        <input type="hidden" th:value="*{id}" th:field="*{id}">
+        <p>År</p>
+        <input type="number" th:value="*{year}" th:field="*{year}" maxlength="15">
+        <p>Titel</p>
+        <input type="text" th:value="*{title}" th:field="*{title}" maxlength="35">
+        <p>Rolle</p>
+        <input type="text" th:value="*{role}" th:field="*{role}" maxlength="35">
+        <input type="submit" value="Send">
+    </form>
+
+</div>
+
+</body>
+</html>
