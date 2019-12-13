@@ -159,7 +159,7 @@
             <form action = "#" th:action="@{/createAD}" th:object="${articleDrone}" enctype="multipart/form-data" method="post">
 
                 <p>Titel</p>
-                <input type = "text" th:field="*{title}">
+                <input type = "text" th:field="*{title}" maxlength="35">
 
                 <p>Paragraf</p>
                 <textarea type = "text" th:field="*{paragraf}" rows="4" cols="50"/>
