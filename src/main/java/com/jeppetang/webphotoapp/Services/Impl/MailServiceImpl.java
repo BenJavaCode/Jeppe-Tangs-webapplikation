@@ -33,6 +33,12 @@ public class MailServiceImpl implements MailService {
 
     }
 
+    /**
+     * Denne metode opretter to SimpleMailMessage og fylder dem med default Strings.
+     * Herefter dbliver de sendt til setTo adressen.
+     * @param receiver msg2 tager parametret receiver, som gives i controlleren med endpointet /saveMail.
+     * Dette parameter er kundens mail.
+     */
     @Override
     public void autoReplies(String receiver){
 
@@ -65,6 +71,7 @@ public class MailServiceImpl implements MailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
+
     @Override
     public void sendEmail(String receiver, String subject, String text) {
 
@@ -89,6 +96,11 @@ public class MailServiceImpl implements MailService {
         mailRepository.flipStatus(mail,1);
     }
 
+    /**
+     * Denne metode sorterer listen som den returnerer efter id.
+     * @param mail gives af Controlleren som benytter den.
+     * @return en liste af mail.
+     */
     @Override
     public List<Mail> fetchByMail(String mail){
 
@@ -98,6 +110,13 @@ public class MailServiceImpl implements MailService {
 
     }
 
+    /**
+     * Denne metode bruges til at populere et mail objekt, når det bliver instantieret.
+     * Vi bruger Instant klassen til at få tidspunktet for at denne metode bliver brugt,
+     * og ZonedDateTime for at få tidszonen.
+     * Herefter formatteres denne data og sætter vi en String lig med værdien af formatter objektet.
+     * @return DEn returnerer strengen formatterString til de Controllere der skal instantiere et mail objekt.
+     */
     @Override
     public String getTime(){
 

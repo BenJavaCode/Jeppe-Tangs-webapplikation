@@ -213,7 +213,7 @@
                     <textarea  class="colorshceme" type="text" value="*{content}" th:field="*{content}" rows="4" cols="50" placeholder="Din besked"></textarea>
                     <p class="line"> <input type="hidden" value="*{date}" th:field="*{date}"></p>
                     <p class="line"> Evt tlf:</p>
-                    <input  class="colorshceme" type="number" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Evt tlf..">
+                    <input  class="colorshceme" type="number" value="*{phoneNumber}" th:field="*{phoneNumber}" placeholder="Tlf.." MIN="10000000" max="99999999">
                     <p class="line"> mail:</p>
                     <input  class="colorshceme" type="email" value="*{mail}" th:field="*{mail}" placeholder="Din mail..">
                     <input style="padding-top: 2px" class="colorshceme" type="submit" value="Send">

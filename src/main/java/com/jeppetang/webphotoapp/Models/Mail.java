@@ -122,6 +122,11 @@ public class Mail implements Comparable<Mail>{
     }
 
 
+    /**
+     * Denne metode er egentligt ikke nødvendig, da vores liste allerede returneres sorteret efter id.
+     * @param o
+     * @return
+     */
     @Override
     public int compareTo(Mail o) {
 

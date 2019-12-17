@@ -47,11 +47,12 @@ public class MailController {
     @RequestMapping(value = "/view/{id}")
     public String answer(Model model, @PathVariable int id){
 
+        Mail mailkunde = mailService.findById(id);
+        mailService.answered(mailkunde);
         model.addAttribute("status", mailService.countUnAnswered());
 
-        Mail mailkunde = mailService.findById(id);
+
         List<Mail> liste = mailService.fetchByMail(mailkunde.getMail());
-        mailService.answered(mailkunde);
 
         model.addAttribute("beskeder", liste);
         model.addAttribute("svar", new Mail(mailkunde.getMail(),4,mailService.getTime(),"Svar fra Jeppe Tang"));

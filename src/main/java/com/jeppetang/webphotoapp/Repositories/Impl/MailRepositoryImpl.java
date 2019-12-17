@@ -17,6 +17,10 @@ public class MailRepositoryImpl implements MailRepository {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * Denne metode vælger alle columns fra mail hvor status ikke er 4(4 er hvis det er en Admin besked)
+     * @return Metoden returnere disse som en liste.
+     */
     @Override
     public List<Mail> getAllMail() {
         log.info("Fetching all mail..");
@@ -88,6 +92,11 @@ public class MailRepositoryImpl implements MailRepository {
     }
 
 
+    /**
+     * Denne metode vælger alt fra mail hvor status er 0(ulæst kundebesked) og bruger count til at tælle disse,
+     * herefter sættes en vatiabel lig med dette reultat.
+     * @return metoden returnere unaswered, som har værdien der svarer til antallet af ulæste beskeder.
+     */
     @Override
     public int countUnseen(){
 
@@ -98,6 +107,15 @@ public class MailRepositoryImpl implements MailRepository {
         return unanswered;
     }
 
+    /**
+     * Denne metode tager fra controlleren der bruger den indirekte, parametret mail
+     * og fra answered metoden i mailServiceImpl int'en 1(svarende til en læst kundebesked)
+     * hernest opdateres en kollone der har det samme id som mailen fra parametret,
+     * og status bliver sat til int'en fra answred(1)
+     * @param mail1
+     * @param sec
+     * @return
+     */
     @Override
     public int flipStatus(Mail mail1, int sec){
         log.info("flipping status to 1(seen)");

@@ -16,6 +16,7 @@ public class ArtikelRepositoryImpl implements ArtikelRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+
     @Override
     public List<ArticleVideo> allAv() {
         return jdbcTemplate.query(

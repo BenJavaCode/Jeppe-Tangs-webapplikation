@@ -32,7 +32,7 @@ public class S3ServiceImpl implements S3Service {
     /**
      * Benytter nedafstående metoder til at uploade til s3 og returne en object url der referer til filen der ligger i s3.
      * @param multipartFile Tager imod en fil af type mulitipartfile
-     * @param folderName Bestemmer hvilken mappe filen haver i
+     * @param folderName Bestemmer hvilken mappe filen havner i
      * @return Filens object url i s3
      */
     @Override
